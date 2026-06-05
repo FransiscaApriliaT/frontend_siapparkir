@@ -75,6 +75,7 @@ export default function AppRouter() {
             <Route path="/cek-status" element={<CekStatusPage />} />
             <Route path="/riwayat"    element={<RiwayatPage />} />
             <Route path="/detail/:kode" element={<DetailLaporanPage />} />
+            <Route path="/internal/login" element={<LoginPage />} />
           </Route>
           <Route path="/sukses"       element={<SuksesPage />} />
 
