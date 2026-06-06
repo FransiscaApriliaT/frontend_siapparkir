@@ -26,7 +26,7 @@ export default function LaporanMasuk() {
     const fetchLaporanData = async () => {
       try {
         setLoading(true);
-        const res = await axios.get('http://localhost:3000/api/petugas/laporan-masuk', {
+        const res = await axios.get('https://siapparkir-production.up.railway.app/petugas/laporan-masuk', {
           headers: { Authorization: `Bearer ${token}` }
         });
 

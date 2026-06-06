@@ -31,7 +31,7 @@ export default function ManajemenPetugas() {
       setLoading(true);
 
       const res = await axios.get(
-        'http://localhost:3000/api/admin/petugas',
+        'https://siapparkir-production.up.railway.app/admin/petugas',
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -101,7 +101,7 @@ export default function ManajemenPetugas() {
       });
 
       await axios.put(
-        `http://localhost:3000/api/admin/petugas/${id_user}/status`,
+        `https://siapparkir-production.up.railway.app/admin/petugas/${id_user}/status`,
         { status_petugas },
         {
           headers: {
@@ -150,7 +150,7 @@ export default function ManajemenPetugas() {
 
     try {
       await axios.put(
-        `http://localhost:3000/api/admin/petugas/${id_user}/status`,
+        `https://siapparkir-production.up.railway.app/admin/petugas/${id_user}/status`,
         { status_petugas },
         {
           headers: {

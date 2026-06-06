@@ -22,7 +22,7 @@ export default function ProfilPetugas() {
     let isMounted = true;
     const fetchProfil = async () => {
       try {
-        const res = await axios.get('http://localhost:3000/api/petugas/profil', {
+        const res = await axios.get('https://siapparkir-production.up.railway.app/petugas/profil', {
           headers: { Authorization: `Bearer ${token}` }
         });
         
@@ -59,7 +59,7 @@ export default function ProfilPetugas() {
     if (selectedFile) data.append('foto_profil', selectedFile);
 
     try {
-      const res = await axios.put('http://localhost:3000/api/petugas/profil/update', data, {
+      const res = await axios.put('https://siapparkir-production.up.railway.app/petugas/profil/update', data, {
         headers: { 
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data'

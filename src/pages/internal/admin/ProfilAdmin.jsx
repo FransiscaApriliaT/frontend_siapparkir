@@ -20,7 +20,7 @@ export default function ProfilAdmin() {
   useEffect(() => {
     const fetchProfil = async () => {
         try {
-        const res = await axios.get('http://localhost:3000/api/admin/profil', {
+        const res = await axios.get('https://siapparkir-production.up.railway.app/admin/profil', {
             headers: { Authorization: `Bearer ${token}` }
         });
         console.log("Data diterima dari API:", res.data); // Cek ini di console browser
@@ -77,7 +77,7 @@ export default function ProfilAdmin() {
       }
 
       await axios.put(
-        'http://localhost:3000/api/admin/profil/update',
+        'https://siapparkir-production.up.railway.app/admin/profil/update',
         data,
         {
           headers: {

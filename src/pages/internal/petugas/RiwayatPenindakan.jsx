@@ -42,7 +42,7 @@ export default function RiwayatPenindakan() {
       try {
         setLoading(true);
         const res = await axios.get(
-          'http://localhost:3000/api/petugas/tugas?status_penugasan=selesai&limit=100',
+          'https://siapparkir-production.up.railway.app/petugas/tugas?status_penugasan=selesai&limit=100',
           { headers: { Authorization: `Bearer ${token}` } }
         );
 

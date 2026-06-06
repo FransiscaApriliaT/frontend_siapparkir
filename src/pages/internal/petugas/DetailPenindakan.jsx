@@ -55,7 +55,7 @@ export default function DetailPenindakan() {
       try {
         setLoading(true)
         const res = await axios.get(
-          `http://localhost:3000/api/petugas/tugas/${id}`,
+          `https://siapparkir-production.up.railway.app/petugas/tugas/${id}`,
           { headers: { Authorization: `Bearer ${token}` } }
         )
         const data = res.data?.data
@@ -85,7 +85,7 @@ export default function DetailPenindakan() {
 
     if (result.isConfirmed) {
       try {
-        await axios.put(`http://localhost:3000/api/petugas/tugas/${id}/mulai`, {}, { 
+        await axios.put(`https://siapparkir-production.up.railway.app/petugas/tugas/${id}/mulai`, {}, { 
           headers: { Authorization: `Bearer ${token}` } 
         });
         setSudahMulai(true);
@@ -118,7 +118,7 @@ export default function DetailPenindakan() {
         formData.append('catatan_tindakan', catatan);
         formData.append('foto_tindakan', fotoBukti);
 
-        const res = await axios.post(`http://localhost:3000/api/petugas/tugas/${id}/selesai`, formData, {
+        const res = await axios.post(`https://siapparkir-production.up.railway.app/petugas/tugas/${id}/selesai`, formData, {
           headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' }
         });
         

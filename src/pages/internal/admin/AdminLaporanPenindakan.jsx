@@ -40,10 +40,10 @@ export default function AdminLaporanPenindakan() {
     const fetchDropdowns = async () => {
       try {
         const [resKategori, resWilayah, resPetugas] = await Promise.all([
-          axios.get('http://localhost:3000/api/kategori'),
-          axios.get('http://localhost:3000/api/admin/wilayah',
+          axios.get('https://siapparkir-production.up.railway.app/kategori'),
+          axios.get('https://siapparkir-production.up.railway.app/admin/wilayah',
             { headers: { Authorization: `Bearer ${token}` } }),
-          axios.get('http://localhost:3000/api/admin/petugas',
+          axios.get('https://siapparkir-production.up.railway.app/admin/petugas',
             { headers: { Authorization: `Bearer ${token}` } }),
         ])
         setKategoriList(resKategori.data?.data || [])
@@ -89,7 +89,7 @@ export default function AdminLaporanPenindakan() {
         params.append('limit', '100')
 
         const res = await axios.get(
-          `http://localhost:3000/api/admin/laporan?${params.toString()}`,
+          `https://siapparkir-production.up.railway.app/admin/laporan?${params.toString()}`,
           { headers: { Authorization: `Bearer ${token}` } }
         )
 

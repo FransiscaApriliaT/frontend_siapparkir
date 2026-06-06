@@ -21,7 +21,7 @@ export default function PenilaianMasyarakat() {
     const fetchData = async () => {
       try {
         setLoading(true)
-        const res = await axios.get('http://localhost:3000/api/admin/penilaian', {
+        const res = await axios.get('https://siapparkir-production.up.railway.app/admin/penilaian', {
           headers: { Authorization: `Bearer ${token}` },
         })
 
@@ -37,7 +37,7 @@ export default function PenilaianMasyarakat() {
           rata_rata_rating: payload.statistik?.rata_rata_rating || 0,
         })
         // Fetch Profil
-        const profilRes = await axios.get('http://localhost:3000/api/admin/profil', {
+        const profilRes = await axios.get('https://siapparkir-production.up.railway.app/admin/profil', {
           headers: { Authorization: `Bearer ${token}` }
         })
         if (profilRes.data?.data?.foto_profil) {

@@ -33,10 +33,10 @@ export default function EditPetugas() {
       try {
         setLoading(true)
         const [resPetugas, resWilayah] = await Promise.all([
-          axios.get(`http://localhost:3000/api/admin/petugas/${id}`, {
+          axios.get(`https://siapparkir-production.up.railway.app/admin/petugas/${id}`, {
             headers: { Authorization: `Bearer ${token}` }
           }),
-          axios.get('http://localhost:3000/api/admin/wilayah', {
+          axios.get('https://siapparkir-production.up.railway.app/admin/wilayah', {
             headers: { Authorization: `Bearer ${token}` }
           }),
         ])
@@ -99,7 +99,7 @@ export default function EditPetugas() {
       if (selectedFile)          fd.append('foto_profil', selectedFile)
 
       await axios.put(
-        `http://localhost:3000/api/admin/petugas/${id}`,
+        `https://siapparkir-production.up.railway.app/admin/petugas/${id}`,
         fd,
         {
           headers: {

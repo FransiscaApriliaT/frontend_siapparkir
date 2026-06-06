@@ -19,7 +19,7 @@ export default function PetugasDashboard() {
     try {
       setLoading(true);
 
-      const res = await axios.get('http://localhost:3000/api/petugas/dashboard', {
+      const res = await axios.get('https://siapparkir-production.up.railway.app/petugas/dashboard', {
         headers: { Authorization: `Bearer ${token}` }
       });
 

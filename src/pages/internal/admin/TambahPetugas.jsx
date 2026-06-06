@@ -42,7 +42,7 @@ export default function TambahPetugas() {
     const fetchWilayah = async () => {
       try {
         // Menampilkan loading kecil agar user tahu ada proses di latar belakang
-        const response = await axios.get('http://localhost:3000/api/admin/wilayah', {
+        const response = await axios.get('https://siapparkir-production.up.railway.app/admin/wilayah', {
           headers: { Authorization: `Bearer ${token}` }
         });
 
@@ -115,7 +115,7 @@ export default function TambahPetugas() {
       data.append('status_petugas', formData.status_petugas);
       data.append('foto_profil', selectedFile);
 
-      await axios.post('http://localhost:3000/api/admin/petugas', data, {
+      await axios.post('https://siapparkir-production.up.railway.app/admin/petugas', data, {
         headers: { 
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data' 
