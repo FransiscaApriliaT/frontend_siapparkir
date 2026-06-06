@@ -34,7 +34,7 @@ export default function AdminDashboard() {
   if (loading) return <div className="min-h-screen flex items-center justify-center text-blue-900 font-bold">Memuat Dashboard...</div>;
   if (error) return <div className="p-10 text-red-600">{error}</div>;
 
-  const { statistik, antrean_verifikasi } = data;
+  const { statistik, antrean_verifikasi } = data || {};
 
   return (
     <div className="max-w-[1600px] mx-auto p-6 lg:p-2 space-y-8">
