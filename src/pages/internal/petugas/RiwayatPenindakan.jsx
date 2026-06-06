@@ -145,7 +145,7 @@ export default function RiwayatPenindakan() {
                     </td>
                     <td className="px-6 py-4">
                       {tindakan.foto_tindakan ? (
-                        <img src={`http://localhost:3000/uploads/${tindakan.foto_tindakan}`} alt="Bukti" className="w-14 h-10 object-cover rounded-lg" />
+                        <img src={`https://siapparkir-production.up.railway.app/uploads/${tindakan.foto_tindakan}`} alt="Bukti" className="w-14 h-10 object-cover rounded-lg" />
                       ) : '-'}
                     </td>
                     <td className="px-6 py-4 text-gray-400 text-xs">{formatTanggal(tindakan.waktu_selesai || item.waktu_penugasan)}</td>

@@ -88,7 +88,7 @@ export default function PetugasDashboard() {
             <div key={item.id_penugasan} className="group bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden">
               <div className="relative h-56 w-full bg-gray-200">
                 <img
-                  src={`http://localhost:3000/uploads/${item.Laporan?.foto_bukti}`}
+                  src={`https://siapparkir-production.up.railway.app/uploads/${item.Laporan?.foto_bukti}`}
                   alt="Bukti"
                   className="w-full h-full object-cover"
                   onError={(e) => { e.target.src = "/no-image.png"; }}

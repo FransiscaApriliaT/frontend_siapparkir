@@ -54,7 +54,7 @@ export default function EditPetugas() {
         })
 
         if (p.foto_profil) {
-          setPreview(`http://localhost:3000/uploads/${p.foto_profil}`)
+          setPreview(`https://siapparkir-production.up.railway.app/uploads/${p.foto_profil}`)
         }
 
         setWilayahList(resWilayah.data?.data || [])

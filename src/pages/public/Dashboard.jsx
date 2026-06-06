@@ -118,7 +118,7 @@ export default function Dashboard() {
                   {/* Foto dengan Rounded yang lebih lembut */}
                   <div className="w-16 h-16 bg-gray-100 rounded-2xl overflow-hidden flex-shrink-0 border border-gray-100">
                     {l.foto_bukti ? (
-                      <img src={`http://localhost:3000/uploads/${l.foto_bukti}`} alt="Bukti" className="w-full h-full object-cover" />
+                      <img src={`https://siapparkir-production.up.railway.app/uploads/${l.foto_bukti}`} alt="Bukti" className="w-full h-full object-cover" />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-xl opacity-50">🚗</div>
                     )}

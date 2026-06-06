@@ -179,7 +179,7 @@ function DetailLaporanCard({ laporan, token }) {
       </div>
 
       {laporan.foto_bukti && (
-        <img src={`http://localhost:3000/uploads/${laporan.foto_bukti}`} alt="Bukti" className="w-full h-72 object-cover rounded-2xl shadow-inner" />
+        <img src={`https://siapparkir-production.up.railway.app/uploads/${laporan.foto_bukti}`} alt="Bukti" className="w-full h-72 object-cover rounded-2xl shadow-inner" />
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

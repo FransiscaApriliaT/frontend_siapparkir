@@ -34,7 +34,7 @@ export default function ProfilAdmin() {
         });
         if (data.foto_profil) {
           setPreviewUrl(
-            `http://localhost:3000/uploads/${data.foto_profil}`
+            `https://siapparkir-production.up.railway.app/uploads/${data.foto_profil}`
           );
         }
         } catch (err) {

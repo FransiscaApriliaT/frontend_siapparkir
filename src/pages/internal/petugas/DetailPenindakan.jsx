@@ -241,7 +241,7 @@ export default function DetailPenindakan() {
                 {lap.foto_bukti ? (
                   <div className="w-full h-[500px] bg-gray-100 rounded-2xl overflow-hidden flex items-center justify-center border border-gray-200 shadow-inner">
                     <img
-                      src={`http://localhost:3000/uploads/${lap.foto_bukti}`}
+                      src={`https://siapparkir-production.up.railway.app/uploads/${lap.foto_bukti}`}
                       alt="Bukti pelapor"
                       className="max-h-full w-auto object-contain"
                     />
@@ -357,7 +357,7 @@ export default function DetailPenindakan() {
                     {tindakanData.foto_tindakan ? (
                       <div className="relative">
                         <img
-                          src={`http://localhost:3000/uploads/${tindakanData.foto_tindakan}`}
+                          src={`https://siapparkir-production.up.railway.app/uploads/${tindakanData.foto_tindakan}`}
                           alt="Bukti tindakan"
                           className="w-full h-56 object-cover rounded-xl"
                         />

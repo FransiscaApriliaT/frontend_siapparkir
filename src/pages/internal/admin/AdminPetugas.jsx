@@ -271,7 +271,7 @@ export default function ManajemenPetugas() {
                             <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-xs font-bold">
                               {p.foto_profil ? (
                                 <img
-                                  src={`http://localhost:3000/uploads/${p.foto_profil}`}
+                                  src={`https://siapparkir-production.up.railway.app/uploads/${p.foto_profil}`}
                                   className="w-8 h-8 rounded-full object-cover"
                                   alt={p.nama}
                                 />

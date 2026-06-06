@@ -86,7 +86,7 @@ export default function SelesaiPenindakan() {
           {hasil.foto_tindakan ? (
             <div className="relative">
               <img
-                src={`http://localhost:3000/uploads/${hasil.foto_tindakan}`}
+                src={`https://siapparkir-production.up.railway.app/uploads/${hasil.foto_tindakan}`}
                 alt="Bukti tindakan"
                 className="w-full h-52 object-cover rounded-xl"
               />

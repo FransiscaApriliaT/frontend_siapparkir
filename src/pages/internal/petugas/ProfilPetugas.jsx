@@ -30,7 +30,7 @@ export default function ProfilPetugas() {
           const data = res.data.data;
           setFormData(data);
           if (data.foto_profil) {
-            setPreviewUrl(`http://localhost:3000/uploads/${data.foto_profil}`);
+            setPreviewUrl(`https://siapparkir-production.up.railway.app/uploads/${data.foto_profil}`);
           }
         }
       } catch (err) {

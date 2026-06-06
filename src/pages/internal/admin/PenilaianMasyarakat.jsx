@@ -41,7 +41,7 @@ export default function PenilaianMasyarakat() {
           headers: { Authorization: `Bearer ${token}` }
         })
         if (profilRes.data?.data?.foto_profil) {
-          setPreviewUrl(`http://localhost:3000/uploads/${profilRes.data.data.foto_profil}`)
+          setPreviewUrl(`https://siapparkir-production.up.railway.app/uploads/${profilRes.data.data.foto_profil}`)
         }
       } catch (err) {
         console.error('Gagal mengambil data penilaian:', err)

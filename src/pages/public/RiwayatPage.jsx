@@ -104,7 +104,7 @@ export default function RiwayatPage() {
               <div className="w-16 h-16 bg-gray-100 rounded-xl flex-shrink-0 overflow-hidden border border-gray-100">
                 {l.foto_bukti && (
                   <img
-                    src={`http://localhost:3000/uploads/${l.foto_bukti}`}
+                    src={`https://siapparkir-production.up.railway.app/uploads/${l.foto_bukti}`}
                     onError={(e) => {
                       console.log("GAGAL LOAD:", e.target.src)
                     }}
