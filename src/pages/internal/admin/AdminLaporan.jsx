@@ -20,10 +20,10 @@ export default function AdminLaporan() {
     try {
       setLoading(true);
       const [laporanRes, statsRes] = await Promise.all([
-        axios.get('http://localhost:3000/api/admin/laporan?status=menunggu_verifikasi', {
+        axios.get('https://siapparkir-production.up.railway.app/admin/laporan?status=menunggu_verifikasi', {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        axios.get('http://localhost:3000/api/admin/dashboard', {
+        axios.get('https://siapparkir-production.up.railway.app/admin/dashboard', {
           headers: { Authorization: `Bearer ${token}` },
         })
       ]);
@@ -131,18 +131,18 @@ function DetailLaporanCard({ laporan, token }) {
   const [alasanTolak, setAlasanTolak] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/admin/petugas?status=aktif', { headers: { Authorization: `Bearer ${token}` } })
+    axios.get('https://siapparkir-production.up.railway.app/admin/petugas?status=aktif', { headers: { Authorization: `Bearer ${token}` } })
       .then(res => setPetugasList(res.data?.data?.data || []));
   }, [token]);
 
   const handleAction = async () => {
     try {
       if (tindakan === 'setujui') {
-        await axios.post(`http://localhost:3000/api/admin/laporan/${laporan.id_laporan}/tugaskan`, 
+        await axios.post(`https://siapparkir-production.up.railway.app/admin/laporan/${laporan.id_laporan}/tugaskan`, 
           { id_petugas: petugas, tindakan_direkomendasikan: 'tindak_lanjut', catatan_tugas: 'Segera tangani', batas_waktu_penanganan: new Date().toISOString() }, 
           { headers: { Authorization: `Bearer ${token}` } });
       } else {
-        await axios.put(`http://localhost:3000/api/admin/laporan/${laporan.id_laporan}/tolak`, 
+        await axios.put(`https://siapparkir-production.up.railway.app/admin/laporan/${laporan.id_laporan}/tolak`, 
           { alasan_penolakan: alasanTolak }, 
           { headers: { Authorization: `Bearer ${token}` } });
       }

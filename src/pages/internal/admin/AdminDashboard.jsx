@@ -14,7 +14,7 @@ export default function AdminDashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/admin/dashboard', {
+        const response = await axios.get('siapparkir-production.up.railway.app/api/admin/dashboard', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setData(response.data.data);
