@@ -44,7 +44,7 @@ export default function AdminLayout({ children }) {
 
       try {
         const res = await axios.get(
-          'http://localhost:3000/api/admin/profil',
+          'https://siapparkir-production.up.railway.app/admin/profil',
           {
             headers: { Authorization: `Bearer ${token}` },
           }

@@ -44,7 +44,7 @@ export default function PetugasLayout({ children }) {
 
       try {
         const res = await axios.get(
-          'http://localhost:3000/api/petugas/profil',
+          'https://siapparkir-production.up.railway.app/petugas/profil',
           {
             headers: {
               Authorization: `Bearer ${token}`
