@@ -34,6 +34,9 @@ export default function AdminDashboard() {
   if (loading) return <div className="min-h-screen flex items-center justify-center text-blue-900 font-bold">Memuat Dashboard...</div>;
   if (error) return <div className="p-10 text-red-600">{error}</div>;
 
+  if (!data) { // Sesuaikan 'data' dengan nama variabel state-mu
+  return <div className="p-4 text-center">Memuat data dashboard...</div>;
+}
   const { statistik, antrean_verifikasi } = data || {};
 
   return (
