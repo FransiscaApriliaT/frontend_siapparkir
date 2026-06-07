@@ -89,7 +89,7 @@ export default function DetailLaporanPage() {
         <div className="text-center bg-white p-10 rounded-3xl border border-gray-100 shadow-xl shadow-gray-100 max-w-sm w-full">
           <div className="text-6xl mb-4">🔍</div>
           <h2 className="text-xl font-black text-gray-800">Laporan Tidak Ditemukan</h2>
-          <p className="text-gray-500 mt-2 text-sm leading-relaxed">
+          <p className="text-gray-500 mt-2 text-sm leading-relaxed text-justify">
             Mohon maaf, kode laporan yang Anda cari tidak tersedia atau sudah dihapus.
           </p>
           <button 
@@ -126,7 +126,7 @@ export default function DetailLaporanPage() {
               <h1 className="text-3xl font-bold mt-2">
                 #{data.kode_laporan}
               </h1>
-              <p className="text-blue-100 text-sm mt-3">
+              <p className="text-blue-100 text-sm mt-3 text-justify">
                 Dilaporkan pada {formatTanggal(data.waktu_laporan)}
               </p>
             </div>
@@ -157,7 +157,7 @@ export default function DetailLaporanPage() {
                   <h3 className="font-bold text-gray-800">
                     Lokasi Pelanggaran
                   </h3>
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-gray-500 text-justify">
                     Detail lokasi kejadian yang dilaporkan
                   </p>
                 </div>
@@ -169,7 +169,7 @@ export default function DetailLaporanPage() {
                   Alamat Lengkap
                 </p>
 
-                <p className="text-sm text-gray-700 leading-relaxed">
+                <p className="text-sm text-gray-700 leading-relaxed text-justify">
                   {data.alamat}
                 </p>
               </div>
@@ -192,9 +192,9 @@ export default function DetailLaporanPage() {
                   <h4 className="font-bold text-gray-800 mb-4">📸 Bukti Penindakan Petugas</h4>
                   <img src={`https://siapparkir-production.up.railway.app/uploads/${data.tindakan[0].foto_tindakan}`} alt="Bukti Penindakan" className="w-64 h-40 object-cover rounded-2xl border shadow-sm" />
                   <div className="mt-4 bg-gray-50 p-4 rounded-xl">
-                    <p className="text-sm"><span className="font-semibold">Jenis Tindakan:</span> {data.tindakan[0].jenis_tindakan}</p>
-                    {data.tindakan[0].catatan_tindakan && (<p className="text-sm mt-2"><span className="font-semibold">Catatan Petugas:</span> {data.tindakan[0].catatan_tindakan}</p>)}
-                    {data.tindakan[0].waktu_selesai && (<p className="text-sm mt-2"><span className="font-semibold">Waktu Selesai:</span> {formatTanggal(data.tindakan[0].waktu_selesai)}</p>)}
+                    <p className="text-sm text-justify leading-relaxed"><span className="font-semibold">Jenis Tindakan:</span> {data.tindakan[0].jenis_tindakan}</p>
+                    {data.tindakan[0].catatan_tindakan && (<p className="text-sm mt-2 text-justify leading-relaxed"><span className="font-semibold">Catatan Petugas:</span> {data.tindakan[0].catatan_tindakan}</p>)}
+                    {data.tindakan[0].waktu_selesai && (<p className="text-sm mt-2 text-justify leading-relaxed"><span className="font-semibold">Waktu Selesai:</span> {formatTanggal(data.tindakan[0].waktu_selesai)}</p>)}
                   </div>
                 </div>
               )}
@@ -204,7 +204,7 @@ export default function DetailLaporanPage() {
           {/* RIGHT */}
           <div className="bg-white rounded-2xl shadow-sm p-6 border border-gray-100 h-fit">
             <h3 className="font-bold text-gray-800 mb-2">Penilaian Layanan</h3>
-            <p className="text-xs text-gray-400 mb-4">Bantu meningkatkan layanan dengan memberikan penilaian.</p>
+            <p className="text-xs text-gray-400 mb-4 text-justify leading-relaxed">Bantu meningkatkan layanan dengan memberikan penilaian.</p>
             <div className="flex gap-1 mb-4">
               {[1, 2, 3, 4, 5].map(i => (
                 <button key={i} onClick={() => setRating(i)} className={`text-2xl transition ${i <= rating ? 'text-yellow-400' : 'text-gray-200'}`}>★</button>

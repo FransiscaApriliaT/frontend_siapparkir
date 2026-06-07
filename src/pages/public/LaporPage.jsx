@@ -178,7 +178,7 @@ export default function LaporPage() {
             </div>
           </div>
           
-          <p className="text-gray-600 w-full text-sm leading-relaxed bg-gray-100 p-4 rounded-xl border border-gray-200">
+          <p className="text-gray-600 w-full text-sm leading-relaxed text-justify bg-gray-100 p-4 rounded-xl border border-gray-200">
             Bantu kami menjaga ketertiban kota dengan melaporkan kendaraan yang parkir sembarangan. Laporan Anda akan segera ditinjau oleh petugas lapangan kami.
           </p>
         </div>
@@ -373,7 +373,7 @@ export default function LaporPage() {
                     Lokasi
                   </p>
 
-                  <p>
+                  <p className="text-justify leading-relaxed">
                     {form.alamat}
                   </p>
                 </div>
@@ -383,7 +383,7 @@ export default function LaporPage() {
                     Deskripsi
                   </p>
 
-                  <p>
+                  <p className="text-justify leading-relaxed">
                     {form.deskripsi}
                   </p>
                 </div>

@@ -9,7 +9,7 @@ const LandingPage = () => {
     <div className="min-h-screen bg-white flex flex-col lg:flex-row antialiased font-sans">
       
       {/* SISI KIRI: Gambar Latar Belakang & Branding Utama */}
-      <div className="relative w-full lg:w-[53%] min-h-[400px] lg:min-h-screen bg-[#0A1931] flex flex-col justify-end p-8 sm:p-12 lg:p-16 text-white overflow-hidden">
+      <div className="relative w-full lg:w-[53%] min-h-[330px] sm:min-h-[400px] lg:min-h-screen bg-[#0A1931] flex flex-col justify-center lg:justify-end px-6 py-10 sm:p-12 lg:p-16 text-white overflow-hidden">
         
         {/* Layer Gambar Latar Belakang */}
         <div 
@@ -18,16 +18,16 @@ const LandingPage = () => {
         />
         
         {/* Konten Teks di Sisi Kiri */}
-        <div className="relative z-10 space-y-4 max-w-xl">
+        <div className="relative z-10 space-y-3 lg:space-y-4 max-w-xl">
           <div className="w-10 h-10 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/20 shadow-lg">
             <Shield className="w-5 h-5 text-white" />
           </div>
           
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
+          <h1 className="text-[2rem] sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
             Ketertiban Dimulai Dari Sini.
           </h1>
           
-          <p className="text-sm sm:text-base text-gray-300 font-medium leading-relaxed">
+          <p className="text-sm sm:text-base text-gray-300 font-medium leading-relaxed text-justify">
             Platform pelaporan resmi Dinas Perhubungan untuk menindak pelanggaran parkir demi kenyamanan dan kelancaran lalu lintas kota.
           </p>
         </div>
@@ -50,7 +50,7 @@ const LandingPage = () => {
             <h2 className="text-2xl sm:text-3xl font-black text-gray-950 tracking-tight">
               Selamat Datang
             </h2>
-            <p className="text-sm sm:text-base text-gray-500 font-medium leading-relaxed">
+            <p className="text-sm sm:text-base text-gray-500 font-medium leading-relaxed text-justify">
               Bantu kami mewujudkan jalanan yang tertib dan aman. Laporkan pelanggaran parkir liar di sekitar Anda.
             </p>
           </div>
@@ -78,7 +78,7 @@ const LandingPage = () => {
                 <h4 className="text-xs font-extrabold text-[#001A57] uppercase tracking-wide">
                   Resmi & Terenkripsi
                 </h4>
-                <p className="text-[11px] text-gray-500 font-semibold leading-normal">
+                <p className="text-[11px] text-gray-500 font-semibold leading-normal text-justify">
                   Data pelapor akan dijaga kerahasiaannya oleh otoritas terkait.
                 </p>
               </div>

@@ -33,7 +33,7 @@ export default function SuksesPage() {
           </div>
 
           <h1 className="text-2xl font-extrabold text-gray-900 mb-2">Laporan Terkirim!</h1>
-          <p className="text-gray-500 text-sm mb-8 leading-relaxed">
+          <p className="text-gray-500 text-sm mb-8 leading-relaxed text-justify">
             Terima kasih telah berkontribusi. Laporan Anda telah masuk ke sistem verifikasi kami.
           </p>
 
@@ -51,7 +51,7 @@ export default function SuksesPage() {
             </div>
             <div className="pt-3 border-t border-gray-200/50">
               <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Lokasi</p>
-              <p className="text-sm text-gray-700 font-medium">{alamat}</p>
+              <p className="text-sm text-gray-700 font-medium text-justify leading-relaxed">{alamat}</p>
             </div>
           </div>
 
@@ -78,7 +78,7 @@ export default function SuksesPage() {
             </div>
             <div className="text-left">
               <p className="text-[11px] font-bold text-gray-800 uppercase">Dinas Perhubungan</p>
-              <p className="text-[9px] text-gray-400 font-medium tracking-wider uppercase">Sistem Pelaporan Terpadu</p>
+              <p className="text-[9px] text-gray-400 font-medium tracking-wider uppercase text-justify">Sistem Pelaporan Terpadu</p>
             </div>
           </div>
         </div>

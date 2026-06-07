@@ -70,7 +70,7 @@ export default function RiwayatPage() {
                   Sistem SiapParkir
                 </p>
               </div>
-              <p className="text-gray-600 w-full text-sm leading-relaxed bg-gray-50 p-4 rounded-xl border border-gray-200">
+              <p className="text-gray-600 w-full text-sm leading-relaxed text-justify bg-gray-50 p-4 rounded-xl border border-gray-200">
                 Pantau status verifikasi, proses penanganan, hingga hasil penindakan dari setiap laporan yang telah Anda kirimkan.
               </p>
             </div>
@@ -118,7 +118,7 @@ export default function RiwayatPage() {
                   <p className="font-bold text-gray-800 text-base">{l.kategori?.nama_kategori || l.nomor_plat}</p>
                   <div className="text-xs text-gray-500 mt-1 flex items-center gap-1.5">
                     <span>📍</span>
-                    <span className="truncate">{l.alamat}</span>
+                    <span className="truncate text-justify leading-relaxed">{l.alamat}</span>
                     <span className="mx-1">•</span>
                     <span>📅 {formatTanggal(l.waktu_laporan)}</span>
                   </div>
