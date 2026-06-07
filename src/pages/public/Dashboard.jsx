@@ -54,7 +54,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 bg-gradient-to-r from-blue-950 to-blue-900 rounded-2xl p-8 relative overflow-hidden text-white flex flex-col justify-between shadow-sm min-h-[220px]">
           <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Pantau & Lapor Parkir Liar</h1>
-          <p className="text-blue-200 text-sm">Bantu wujudkan ketertiban kota. Laporkan kendaraan yang parkir sembarangan dan pantau status tindak lanjut secara real-time.</p>
+          <p className="text-blue-200 text-sm text-justify leading-relaxed">Bantu wujudkan ketertiban kota. Laporkan kendaraan yang parkir sembarangan dan pantau status tindak lanjut secara real-time.</p>
           <button 
             onClick={() => navigate('/lapor')} 
             className="bg-cyan-100 hover:bg-cyan-300 text-blue-950 px-5 py-2.5 rounded-xl text-sm font-bold w-fit transition shadow-sm"
@@ -136,11 +136,11 @@ export default function Dashboard() {
                         {l.nomor_plat}
                       </span>
                       <span>•</span>
-                      <span className="text-sm text-gray-500 break-words leading-snug">{l.alamat}</span>
+                      <span className="block text-sm text-gray-500 break-words leading-snug text-justify">{l.alamat}</span>
                     </div>
                     
                     {/* Tanggal dengan style yang lebih bersih */}
-                    <p className="text-sm text-gray-500 break-words leading-snug">
+                    <p className="text-sm text-gray-500 break-words leading-snug text-justify">
                       📅 {formatTanggal(l.waktu_laporan)}
                     </p>
                   </div>
