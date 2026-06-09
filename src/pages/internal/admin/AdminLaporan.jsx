@@ -173,7 +173,6 @@ function DetailLaporanCard({ laporan, token }) {
       <div className="flex justify-between items-start">
         <div>
             <h3 className="text-3xl font-extrabold text-gray-900">{laporan.kode_laporan}</h3>
-            <span className="inline-block mt-2 text-[10px] font-bold uppercase tracking-widest text-red-600 bg-red-50 px-3 py-1 rounded-full">SLA Urgent</span>
         </div>
         <p className="text-sm text-gray-400 font-medium">{new Date(laporan.created_at).toLocaleDateString('id-ID')}</p>
       </div>

@@ -105,13 +105,23 @@ export default function LaporPage() {
 
   const handleNext = () => {
     // Validasi Step 0
-    if (step === 0 && (!form.foto_bukti || !form.nomor_plat.trim())) {
-      return Swal.fire({ icon: 'warning', title: 'Data Belum Lengkap', text: 'Pastikan foto dan plat nomor sudah diisi.' });
+    // Nomor plat dan kategori tidak wajib
+    // Yang wajib hanya foto bukti
+    if (step === 0 && !form.foto_bukti) {
+      return Swal.fire({
+        icon: 'warning',
+        title: 'Data Belum Lengkap',
+        text: 'Pastikan foto bukti sudah diisi.'
+      });
     }
 
     // Validasi Step 1
     if (step === 1 && (!form.latitude || !form.alamat.trim() || !form.deskripsi.trim())) {
-      return Swal.fire({ icon: 'warning', title: 'Data Belum Lengkap', text: 'Mohon lengkapi lokasi, alamat, dan deskripsi.' });
+      return Swal.fire({
+        icon: 'warning',
+        title: 'Data Belum Lengkap',
+        text: 'Mohon lengkapi lokasi, alamat, dan deskripsi.'
+      });
     }
 
     setStep(prev => prev + 1);
@@ -280,7 +290,7 @@ export default function LaporPage() {
                     name="nomor_plat"
                     value={form.nomor_plat}
                     onChange={handleChange}
-                    placeholder="Nomor Plat"
+                    placeholder="Nomor Plat (Opsional)"
                     className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500"
                   />
 
@@ -303,7 +313,7 @@ export default function LaporPage() {
                     onChange={handleChange}
                     className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-500"
                   >
-                    <option value="">Pilih Kategori</option>
+                    <option value="">Pilih Kategori (Opsional)</option>
 
                     {kategoriList.map(k => (
                       <option
@@ -364,7 +374,7 @@ export default function LaporPage() {
                   </p>
 
                   <p className="font-bold text-lg">
-                    {form.nomor_plat}
+                    {form.nomor_plat || '-'}
                   </p>
                 </div>
 
