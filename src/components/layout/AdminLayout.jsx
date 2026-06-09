@@ -7,7 +7,8 @@ import {
   ClipboardList,
   Star,
   Users,
-  X
+  X,
+  Menu
 } from 'lucide-react';
 
 function SidebarItem({ icon, label, onClick, active }) {
@@ -79,15 +80,19 @@ export default function AdminLayout({ children }) {
       {/* HEADER */}
       <header className="h-[73px] flex-shrink-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between shadow-sm z-30">
         <div className="flex items-center gap-3">
-
-          {/* LOGO A - KLIK UNTUK BUKA SIDEBAR DI HP */}
+          {/* TOMBOL MENU MOBILE */}
           <button
             type="button"
             onClick={() => setSidebarOpen(true)}
-            className="w-8 h-8 bg-[#001A57] rounded-xl flex items-center justify-center md:cursor-default"
+            className="md:hidden w-9 h-9 bg-white border border-gray-200 rounded-xl flex items-center justify-center text-[#001A57] shadow-sm hover:bg-gray-50 active:scale-95 transition"
           >
-            <span className="text-white font-black text-sm">A</span>
+            <Menu size={20} />
           </button>
+
+          {/* LOGO A PASIF */}
+          <div className="w-8 h-8 bg-[#001A57] rounded-xl flex items-center justify-center">
+            <span className="text-white font-black text-sm">A</span>
+          </div>
 
           <div>
             <h1 className="font-bold text-gray-800 leading-none">
