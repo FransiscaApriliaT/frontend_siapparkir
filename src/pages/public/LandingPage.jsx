@@ -344,38 +344,6 @@ const LandingPage = () => {
                 Setiap laporan yang masuk akan menjadi bahan pemantauan dan tindak lanjut petugas lapangan. Fokus penindakan ditujukan pada <strong>kendaraan yang melanggar aturan parkir</strong>, bukan pada pelapor, sehingga masyarakat dapat berpartisipasi membantu menciptakan jalan yang lebih tertib, aman, dan nyaman.
               </p>
             </div>
-
-            <div className="w-full lg:w-64 shrink-0 space-y-3">
-              <div className="bg-[#F4F7FF] border border-[#E2EAFD] rounded-2xl p-4 space-y-1">
-                <div className="flex items-center gap-2 text-[#001A57]">
-                  <Building2 className="w-4 h-4" />
-                  <span className="text-xs font-extrabold uppercase tracking-wide">
-                    Kontak Pengaduan
-                  </span>
-                </div>
-
-                <p className="text-sm font-bold text-gray-800 pt-1">
-                  081-355-591-719
-                </p>
-
-                <p className="text-[11px] text-gray-500">
-                  via WhatsApp / SMS
-                </p>
-              </div>
-
-              <div className="bg-[#FFF7F4] border border-[#FBCFBC] rounded-2xl p-4 space-y-1">
-                <div className="flex items-center gap-2 text-[#7B2D00]">
-                  <AlertTriangle className="w-4 h-4" />
-                  <span className="text-xs font-extrabold uppercase tracking-wide">
-                    Jenis Pelanggaran
-                  </span>
-                </div>
-
-                <p className="text-[11px] text-gray-600 leading-relaxed">
-                  Laporkan kendaraan yang parkir sembarangan, menghalangi jalan, menutup akses, berada di area larangan parkir, atau membahayakan pengguna jalan lainnya.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
