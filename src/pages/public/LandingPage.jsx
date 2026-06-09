@@ -145,43 +145,20 @@ const LandingPage = () => {
 
   const legalGroups = [
     {
-      type: 'Hukum Nasional',
-      accent: '#1A3F9F',
-      bg: '#F0F4FF',
-      border: '#C8D5FA',
+      type: 'Hukum Nasional', accent: '#1A3F9F', bg: '#F0F4FF', border: '#C8D5FA',
       items: [
-        {
-          label: 'UU No. 22 Tahun 2009',
-          subtitle: 'Lalu Lintas dan Angkutan Jalan',
-          detail:
-            'Mengatur ketertiban lalu lintas dan larangan tindakan yang mengganggu fungsi jalan.',
-        },
-        {
-          label: 'PP No. 79 Tahun 2013',
-          subtitle: 'Jaringan Lalu Lintas dan Angkutan Jalan',
-          detail:
-            'Mengatur larangan parkir pada area tertentu seperti persimpangan, trotoar, tikungan, dan area rawan kemacetan.',
-        },
+        { label: 'Pasal 287 Ayat (1) UU No. 22 Tahun 2009', subtitle: 'Pelanggaran rambu & marka lalu lintas', detail: 'Setiap pengemudi yang melanggar aturan rambu lalu lintas atau marka jalan — termasuk marka larangan parkir — dipidana kurungan paling lama 2 bulan atau denda paling banyak Rp500.000.' },
+        { label: 'Pasal 106 Ayat (4) UU No. 22 Tahun 2009', subtitle: 'Kewajiban mematuhi marka jalan', detail: 'Setiap pengemudi kendaraan bermotor di jalan wajib mematuhi ketentuan marka jalan, termasuk larangan parkir pada area yang ditandai marka tertentu.' },
+        { label: 'Pasal 28 Ayat (1) UU No. 22 Tahun 2009', subtitle: 'Larangan mengganggu fungsi jalan', detail: 'Setiap orang dilarang melakukan perbuatan yang mengakibatkan gangguan pada fungsi jalan. Parkir sembarangan yang menghambat arus lalu lintas termasuk dalam kategori pelanggaran ini.' },
+        { label: 'Pasal 106 PP No. 79 Tahun 2013', subtitle: 'Larangan lokasi parkir di ruang milik jalan', detail: 'Kendaraan bermotor dilarang parkir di: area penyeberangan pejalan kaki, tikungan, persimpangan, trotoar, jalur bus, depan akses darurat, dan ruas dengan tingkat kemacetan tinggi.' },
       ],
     },
     {
-      type: 'Perda Kota Palu',
-      accent: '#9B3A00',
-      bg: '#FFF5F0',
-      border: '#F9CAAE',
+      type: 'Perda Kota Palu', accent: '#9B3A00', bg: '#FFF5F0', border: '#F9CAAE',
       items: [
-        {
-          label: 'Perda Kota Palu No. 6 Tahun 2023',
-          subtitle: 'Penyelenggaraan Lalu Lintas dan Angkutan Jalan',
-          detail:
-            'Menjadi dasar pengaturan dan penindakan pelanggaran parkir di wilayah Kota Palu.',
-        },
-        {
-          label: 'SK Wali Kota terkait Satgas Parkir',
-          subtitle: 'Pengendalian dan Penertiban Parkir',
-          detail:
-            'Menjadi dasar koordinasi petugas dalam pengawasan dan penertiban parkir liar.',
-        },
+        { label: 'Perda Kota Palu No. 6 Tahun 2023', subtitle: 'Penyelenggaraan Lalu Lintas dan Angkutan Jalan', detail: 'Mengatur larangan parkir di tempat yang tidak ditetapkan oleh Pemkot Palu. Pengendara yang memarkir kendaraan di luar titik resmi dapat dikenai sanksi administratif dan tindakan Derek oleh Satgas.' },
+        { label: 'Perda Kota Palu No. 3 Tahun 2022', subtitle: 'Dasar penyelenggaraan LLAJ Kota Palu', detail: 'Perda induk yang mewajibkan setiap pengguna jalan mematuhi rambu, marka, dan ketentuan parkir yang ditetapkan di wilayah Kota Palu. Pelanggaran dapat diproses melalui sidang tilang.' },
+        { label: 'Keputusan Wali Kota Palu No. 551.1/168.2/DISHUB/2021', subtitle: 'Satgas Pengendalian & Penertiban Parkir', detail: 'Satgas berwenang menindak kendaraan yang parkir sembarangan: mulai dari teguran, penilangan, hingga penggembokan dan penDerek-an kendaraan ke pool Dishub Kota Palu.' },
       ],
     },
   ];
@@ -340,66 +317,65 @@ const LandingPage = () => {
       </section>
 
       {/* ================= DISHUB ================= */}
-      <section className="py-16 sm:py-24 px-6 bg-white">
+      <section className="bg-white border-t border-gray-100 py-16 px-6 sm:px-12 lg:px-24">
         <div className="max-w-5xl mx-auto">
-          <Reveal>
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-1 h-5 bg-[#001A57] rounded-full" />
-              <span className="text-[11px] font-black text-[#001A57] uppercase tracking-widest">
-                Instansi Mitra
-              </span>
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-1.5 h-6 bg-[#001A57] rounded-full" />
+            <span className="text-xs font-extrabold text-[#001A57] uppercase tracking-widest">
+              Instansi Mitra
+            </span>
+          </div>
+
+          <h2 className="text-2xl sm:text-3xl font-black text-gray-950 mb-4 tracking-tight">
+            Dinas Perhubungan Kota Palu
+          </h2>
+
+          <div className="flex flex-col lg:flex-row gap-8 items-start">
+            <div className="flex-1 space-y-4 text-sm text-gray-600 leading-relaxed">
+              <p>
+                <strong>Dinas Perhubungan (Dishub) Kota Palu</strong> adalah instansi pemerintah daerah yang berwenang mengelola, mengawasi, dan menertibkan penyelenggaraan lalu lintas serta angkutan jalan di wilayah Kota Palu.
+              </p>
+
+              <p>
+                Melalui platform ini, masyarakat dapat melaporkan <strong>kendaraan yang parkir tidak pada tempatnya</strong>, seperti kendaraan yang berhenti atau parkir di trotoar, bahu jalan, tikungan, persimpangan, depan akses keluar masuk, area larangan parkir, maupun lokasi lain yang mengganggu kelancaran dan keselamatan lalu lintas.
+              </p>
+
+              <p>
+                Setiap laporan yang masuk akan menjadi bahan pemantauan dan tindak lanjut petugas lapangan. Fokus penindakan ditujukan pada <strong>kendaraan yang melanggar aturan parkir</strong>, bukan pada pelapor, sehingga masyarakat dapat berpartisipasi membantu menciptakan jalan yang lebih tertib, aman, dan nyaman.
+              </p>
             </div>
 
-            <h2 className="text-2xl sm:text-4xl font-black text-gray-950 tracking-tight mb-10">
-              Dinas Perhubungan Kota Palu
-            </h2>
-          </Reveal>
+            <div className="w-full lg:w-64 shrink-0 space-y-3">
+              <div className="bg-[#F4F7FF] border border-[#E2EAFD] rounded-2xl p-4 space-y-1">
+                <div className="flex items-center gap-2 text-[#001A57]">
+                  <Building2 className="w-4 h-4" />
+                  <span className="text-xs font-extrabold uppercase tracking-wide">
+                    Kontak Pengaduan
+                  </span>
+                </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <Reveal>
-              <div className="bg-[#F7F9FF] rounded-2xl p-6 h-full">
-                <Building2 className="text-[#001A57] mb-4" size={26} />
+                <p className="text-sm font-bold text-gray-800 pt-1">
+                  081-355-591-719
+                </p>
 
-                <h3 className="font-black text-gray-950 mb-2">
-                  Tugas & Wewenang
-                </h3>
-
-                <p className="text-sm text-gray-600 leading-relaxed text-justify">
-                  Dishub Kota Palu berperan dalam pengawasan, pengelolaan, dan penertiban lalu lintas serta parkir di wilayah Kota Palu.
+                <p className="text-[11px] text-gray-500">
+                  via WhatsApp / SMS
                 </p>
               </div>
-            </Reveal>
 
-            <Reveal delay={80}>
-              <div className="bg-[#FFFDF0] border border-[#FFE680] rounded-2xl p-6 h-full">
-                <Scale className="text-[#9B6B00] mb-4" size={26} />
-
-                <h3 className="font-black text-gray-950 mb-4">
-                  Tarif Resmi Parkir
-                </h3>
-
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="bg-white border border-[#FFE680] rounded-xl p-3 text-center">
-                    <p className="text-lg font-black text-[#001A57]">
-                      Rp3.000
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      Roda Empat
-                    </p>
-                  </div>
-
-                  <div className="bg-white border border-[#FFE680] rounded-xl p-3 text-center">
-                    <p className="text-lg font-black text-[#001A57]">
-                      Rp2.000
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      Roda Dua
-                    </p>
-                  </div>
+              <div className="bg-[#FFF7F4] border border-[#FBCFBC] rounded-2xl p-4 space-y-1">
+                <div className="flex items-center gap-2 text-[#7B2D00]">
+                  <AlertTriangle className="w-4 h-4" />
+                  <span className="text-xs font-extrabold uppercase tracking-wide">
+                    Jenis Pelanggaran
+                  </span>
                 </div>
-              </div>
-            </Reveal>
 
+                <p className="text-[11px] text-gray-600 leading-relaxed">
+                  Laporkan kendaraan yang parkir sembarangan, menghalangi jalan, menutup akses, berada di area larangan parkir, atau membahayakan pengguna jalan lainnya.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
