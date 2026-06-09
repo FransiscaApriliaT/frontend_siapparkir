@@ -82,7 +82,7 @@ export default function LoginPage() {
           style={{ backgroundImage: `url('https://images.unsplash.com/photo-1506521781263-d8422e82f27a?q=80&w=1200')` }}
         />
         <div className="relative z-10 space-y-4 max-w-xl">
-          <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center border border-white/30 shadow-lg overflow-hidden p-1">
+          <div className="w-14 h-14 flex items-center justify-center overflow-hidden">
             <img
               src={logoDishub}
               alt="Logo Dinas Perhubungan"

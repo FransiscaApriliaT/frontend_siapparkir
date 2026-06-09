@@ -20,7 +20,7 @@ const LandingPage = () => {
         
         {/* Konten Teks di Sisi Kiri */}
         <div className="relative z-10 space-y-3 lg:space-y-4 max-w-xl">
-          <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center border border-white/30 shadow-lg overflow-hidden p-1">
+          <div className="w-14 h-14 flex items-center justify-center overflow-hidden">
             <img
               src={logoDishub}
               alt="Logo Dinas Perhubungan"
