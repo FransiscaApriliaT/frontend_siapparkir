@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // 1. Import useNavigate dari react-router-dom
 import { Shield } from 'lucide-react';
-import logoDishub from '../../assets/logo-dishub.png';
+import logoDishub from '../../assets/logo_dishub.png';
 
 const LandingPage = () => {
   const navigate = useNavigate(); // 2. Inisialisasi fungsi navigate di dalam komponen

@@ -4,7 +4,7 @@ import { login } from '../../api/auth.api';
 import useAuthStore from '../../store/authStore';
 import { Shield } from 'lucide-react';
 import Swal from 'sweetalert2';
-import logoDishub from '../../assets/logo-dishub.png';
+import logoDishub from '../../assets/logo_dishub.png';
 
 export default function LoginPage() {
   const navigate = useNavigate();
