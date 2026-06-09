@@ -400,28 +400,6 @@ const LandingPage = () => {
               </div>
             </Reveal>
 
-            <Reveal delay={160}>
-              <div className="bg-[#F0FFF6] border border-[#A8F0C6] rounded-2xl p-6 h-full">
-                <AlertTriangle className="text-[#0A6B35] mb-4" size={26} />
-
-                <h3 className="font-black text-gray-950 mb-2">
-                  Kontak Pengaduan
-                </h3>
-
-                <p className="text-sm text-gray-600 leading-relaxed mb-4 text-justify">
-                  Laporkan parkir liar langsung ke Satgas Dishub Kota Palu.
-                </p>
-
-                <div className="bg-[#001A57] rounded-xl p-4">
-                  <p className="text-[#FFCC00] font-black text-lg">
-                    081-355-591-719
-                  </p>
-                  <p className="text-white/60 text-xs">
-                    Satgas Penertiban Parkir Kota Palu
-                  </p>
-                </div>
-              </div>
-            </Reveal>
           </div>
         </div>
       </section>
