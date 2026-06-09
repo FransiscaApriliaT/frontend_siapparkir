@@ -126,14 +126,16 @@ export default function PreviewPDF() {
 
                 <td className="py-3 px-3 text-center">
                   {item.foto_url ? (
-                    <img
-                      src={item.foto_url}
-                      alt={`Bukti ${item.id}`}
-                      className="w-20 h-20 object-cover rounded border mx-auto"
-                      onError={(e) => {
-                        e.currentTarget.style.display = 'none';
-                      }}
-                    />
+                    <div className="w-28 h-28 mx-auto border rounded bg-gray-50 flex items-center justify-center overflow-hidden">
+                      <img
+                        src={item.foto_url}
+                        alt={`Bukti ${item.id}`}
+                        className="max-w-full max-h-full object-contain"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                        }}
+                      />
+                    </div>
                   ) : (
                     <span className="text-gray-400">-</span>
                   )}
