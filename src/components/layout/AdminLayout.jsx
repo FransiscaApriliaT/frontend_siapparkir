@@ -204,7 +204,7 @@ export default function AdminLayout({ children }) {
           {/* LOGOUT */}
           <div className="p-4 border-t border-blue-900">
             <button
-              onClick={() => goTo('/')}
+              onClick={() => goTo('/internal/login')}
               className="w-full flex items-center justify-center gap-2 text-blue-200 text-sm font-semibold py-2.5 rounded-xl border border-blue-800 transition-all duration-200 hover:bg-red-500 hover:text-white hover:border-red-500 hover:shadow-lg hover:-translate-y-0.5 active:scale-95"
             >
               ← Keluar
