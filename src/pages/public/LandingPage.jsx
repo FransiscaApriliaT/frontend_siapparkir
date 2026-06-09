@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // 1. Import useNavigate dari react-router-dom
 import { Shield } from 'lucide-react';
+import logoDishub from '../../assets/logo-dishub.png';
 
 const LandingPage = () => {
   const navigate = useNavigate(); // 2. Inisialisasi fungsi navigate di dalam komponen
@@ -19,8 +20,12 @@ const LandingPage = () => {
         
         {/* Konten Teks di Sisi Kiri */}
         <div className="relative z-10 space-y-3 lg:space-y-4 max-w-xl">
-          <div className="w-10 h-10 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/20 shadow-lg">
-            <Shield className="w-5 h-5 text-white" />
+          <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center border border-white/30 shadow-lg overflow-hidden p-1">
+            <img
+              src={logoDishub}
+              alt="Logo Dinas Perhubungan"
+              className="w-full h-full object-contain"
+            />
           </div>
           
           <h1 className="text-[2rem] sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">

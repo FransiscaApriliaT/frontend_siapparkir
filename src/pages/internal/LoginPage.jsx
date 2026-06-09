@@ -77,16 +77,17 @@ export default function LoginPage() {
       
       {/* SISI KIRI: Visual/Gambar Branding */}
       <div className="relative w-full lg:w-[53%] min-h-[300px] lg:min-h-screen bg-[#0A1931] flex flex-col justify-end p-8 sm:p-12 lg:p-16 text-white overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center opacity-20">
-          <img
-            src={logoDishub}
-            alt="Logo Dinas Perhubungan"
-            className="w-[70%] max-w-[520px] object-contain"
-          />
-        </div>
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-overlay"
+          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1506521781263-d8422e82f27a?q=80&w=1200')` }}
+        />
         <div className="relative z-10 space-y-4 max-w-xl">
-          <div className="w-10 h-10 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/20 shadow-lg">
-            <Shield className="w-5 h-5 text-white" />
+          <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center border border-white/30 shadow-lg overflow-hidden p-1">
+            <img
+              src={logoDishub}
+              alt="Logo Dinas Perhubungan"
+              className="w-full h-full object-contain"
+            />
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
             Ketertiban Dimulai Dari Sini.
