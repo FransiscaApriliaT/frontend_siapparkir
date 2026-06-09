@@ -10,15 +10,23 @@ const BASE_UPLOAD_URL = 'https://siapparkir-production.up.railway.app/uploads';
 const getFileUrl = (filename) => {
   if (!filename) return null;
 
-  // Kalau database sudah simpan full URL
-  if (filename.startsWith('http')) return filename;
+  const fileString = String(filename);
 
-  // Kalau database cuma simpan nama file
-  return `${BASE_UPLOAD_URL}/${filename}`;
+  // Kalau database sudah simpan full URL
+  if (fileString.startsWith('http')) return fileString;
+
+  // Hindari URL dobel seperti /uploads/uploads/nama-file.jpg
+  const cleanFilename = fileString.replace(/^\/?uploads\//, '');
+
+  return `${BASE_UPLOAD_URL}/${cleanFilename}`;
 };
 
 const getFotoLaporan = (item) => {
-  const fotoTindakan = item.tindakan?.[0]?.foto_tindakan;
+  const tindakan = Array.isArray(item.tindakan)
+    ? item.tindakan[0]
+    : item.tindakan;
+
+  const fotoTindakan = tindakan?.foto_tindakan;
   const fotoBukti = item.foto_bukti;
 
   return getFileUrl(fotoTindakan || fotoBukti);
@@ -155,36 +163,60 @@ export default function AdminLaporanPenindakan() {
   // ============================================================
   const exportToExcel = () => {
     const rows = laporan.map((item) => ({
-      'Report ID':    item.kode_laporan,
-      'Tanggal':      new Date(item.created_at).toLocaleString('id-ID'),
-      'Petugas':      item.petugas?.nama || '-',
-      'Plat Nomor':   item.nomor_plat,
-      'Pelanggaran':  item.kategori?.nama_kategori || '-',
-      'Tindakan':     item.tindakan?.[0]?.jenis_tindakan || '-',
-      'Status':       item.status_laporan,
-      'Lokasi':       item.alamat,
-    }))
-    const ws = XLSX.utils.json_to_sheet(rows)
-    const wb = XLSX.utils.book_new()
-    XLSX.utils.book_append_sheet(wb, ws, 'Laporan Penindakan')
-    XLSX.writeFile(wb, `Laporan_Penindakan_${new Date().toLocaleDateString('id-ID')}.xlsx`)
-    setShowExportModal(false)
-  }
+      'Report ID':       item.kode_laporan,
+      'Tanggal':         new Date(item.created_at).toLocaleString('id-ID'),
+      'Petugas':         item.petugas?.nama || '-',
+      'Plat Nomor':      item.nomor_plat || '-',
+      'Pelanggaran':     item.kategori?.nama_kategori || '-',
+      'Tindakan':        item.tindakan?.[0]?.jenis_tindakan || '-',
+      'Status':          item.status_laporan,
+      'Lokasi':          item.alamat,
+      'Foto Bukti URL':  getFotoLaporan(item) || '-',
+    }));
+
+    const ws = XLSX.utils.json_to_sheet(rows);
+
+    // Buat kolom Foto Bukti URL menjadi hyperlink di Excel
+    rows.forEach((row, index) => {
+      const url = row['Foto Bukti URL'];
+
+      if (url && url !== '-') {
+        const cellAddress = XLSX.utils.encode_cell({
+          r: index + 1,
+          c: 8 // kolom ke-9 = Foto Bukti URL
+        });
+
+        if (ws[cellAddress]) {
+          ws[cellAddress].l = {
+            Target: url,
+            Tooltip: 'Buka foto bukti'
+          };
+        }
+      }
+    });
+
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Laporan Penindakan');
+    XLSX.writeFile(wb, `Laporan_Penindakan_${new Date().toLocaleDateString('id-ID')}.xlsx`);
+    setShowExportModal(false);
+  };
 
   const handleExportPDF = () => {
     const dataToExport = laporan.map((item) => ({
       id:       item.kode_laporan,
       waktu:    new Date(item.created_at).toLocaleString('id-ID'),
-      nopol:    item.nomor_plat,
+      nopol:    item.nomor_plat || '-',
       kategori: item.kategori?.nama_kategori || '-',
       tindakan: item.tindakan?.[0]?.jenis_tindakan?.toUpperCase() || '-',
       petugas:  item.petugas?.nama || '-',
       status:   item.status_laporan,
-    }))
-    localStorage.setItem('data_ekspor_dishub', JSON.stringify(dataToExport))
-    window.open('/internal/admin/preview-laporan', '_blank')
-    setShowExportModal(false)
-  }
+      foto_url: getFotoLaporan(item) || null,
+    }));
+
+    localStorage.setItem('data_ekspor_dishub', JSON.stringify(dataToExport));
+    window.open('/internal/admin/preview-laporan', '_blank');
+    setShowExportModal(false);
+  };
 
   const TINDAKAN_STYLE = {
     derek:           'bg-red-100 text-red-700',
@@ -450,20 +482,16 @@ export default function AdminLaporanPenindakan() {
                     {/* Bukti / Gambar */}
                     <td className="px-6 py-4 text-center">
                       {getFotoLaporan(item) ? (
-                        <button
-                          onClick={() => navigate(`/internal/admin/laporan/${item.id_laporan}`)}
-                          className="inline-block group"
-                          title="Klik untuk lihat detail laporan"
-                        >
+                        <div className="w-16 h-16 mx-auto rounded-xl overflow-hidden border border-gray-200 bg-gray-100 shadow-sm">
                           <img
                             src={getFotoLaporan(item)}
                             alt={`Bukti laporan ${item.kode_laporan}`}
-                            className="w-16 h-16 object-cover rounded-xl border border-gray-200 shadow-sm group-hover:scale-105 group-hover:shadow-md transition"
+                            className="w-full h-full object-cover"
                             onError={(e) => {
                               e.currentTarget.style.display = 'none';
                             }}
                           />
-                        </button>
+                        </div>
                       ) : (
                         <div className="w-16 h-16 mx-auto rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-300 text-xs">
                           Tidak ada
