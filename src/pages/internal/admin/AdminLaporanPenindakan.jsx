@@ -5,6 +5,25 @@ import * as XLSX from 'xlsx'
 import useAuthStore from '../../../store/authStore'
 import AdminLayout from "../../../components/layout/AdminLayout";
 
+const BASE_UPLOAD_URL = 'https://siapparkir-production.up.railway.app/uploads';
+
+const getFileUrl = (filename) => {
+  if (!filename) return null;
+
+  // Kalau database sudah simpan full URL
+  if (filename.startsWith('http')) return filename;
+
+  // Kalau database cuma simpan nama file
+  return `${BASE_UPLOAD_URL}/${filename}`;
+};
+
+const getFotoLaporan = (item) => {
+  const fotoTindakan = item.tindakan?.[0]?.foto_tindakan;
+  const fotoBukti = item.foto_bukti;
+
+  return getFileUrl(fotoTindakan || fotoBukti);
+};
+
 export default function AdminLaporanPenindakan() {
   const navigate = useNavigate()
   const token    = useAuthStore((s) => s.token)
@@ -358,7 +377,7 @@ export default function AdminLaporanPenindakan() {
                 <th className="px-6 py-4 text-left">Plat Nomor</th>
                 <th className="px-6 py-4 text-left">Pelanggaran</th>
                 <th className="px-6 py-4 text-left">Tindakan</th>
-                <th className="px-6 py-4 text-center">Aksi</th>
+                <th className="px-6 py-4 text-center">Bukti</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
@@ -406,7 +425,7 @@ export default function AdminLaporanPenindakan() {
                     {/* Plat Nomor */}
                     <td className="px-6 py-4">
                       <span className="bg-gray-900 text-white px-2 py-1 rounded text-[11px] font-bold font-mono">
-                        {item.nomor_plat}
+                        {item.nomor_plat || '-'}
                       </span>
                     </td>
 
@@ -428,15 +447,28 @@ export default function AdminLaporanPenindakan() {
                       )}
                     </td>
 
-                    {/* Aksi */}
+                    {/* Bukti / Gambar */}
                     <td className="px-6 py-4 text-center">
-                      <button
-                        onClick={() => navigate(`/internal/admin/laporan/${item.id_laporan}`)}
-                        className="text-xl hover:opacity-70 transition"
-                        title="Lihat Detail"
-                      >
-                        👁️
-                      </button>
+                      {getFotoLaporan(item) ? (
+                        <button
+                          onClick={() => navigate(`/internal/admin/laporan/${item.id_laporan}`)}
+                          className="inline-block group"
+                          title="Klik untuk lihat detail laporan"
+                        >
+                          <img
+                            src={getFotoLaporan(item)}
+                            alt={`Bukti laporan ${item.kode_laporan}`}
+                            className="w-16 h-16 object-cover rounded-xl border border-gray-200 shadow-sm group-hover:scale-105 group-hover:shadow-md transition"
+                            onError={(e) => {
+                              e.currentTarget.style.display = 'none';
+                            }}
+                          />
+                        </button>
+                      ) : (
+                        <div className="w-16 h-16 mx-auto rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-300 text-xs">
+                          Tidak ada
+                        </div>
+                      )}
                     </td>
 
                   </tr>
