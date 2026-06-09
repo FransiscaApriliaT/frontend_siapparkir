@@ -331,7 +331,7 @@ const LandingPage = () => {
           </h2>
 
           <div className="flex flex-col lg:flex-row gap-8 items-start">
-            <div className="flex-1 space-y-4 text-sm text-gray-600 leading-relaxed">
+            <div className="flex-1 space-y-4 text-sm text-gray-600 leading-relaxed text-justify">
               <p>
                 <strong>Dinas Perhubungan (Dishub) Kota Palu</strong> adalah instansi pemerintah daerah yang berwenang mengelola, mengawasi, dan menertibkan penyelenggaraan lalu lintas serta angkutan jalan di wilayah Kota Palu.
               </p>
