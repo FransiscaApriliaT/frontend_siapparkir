@@ -202,25 +202,33 @@ export default function AdminLaporanPenindakan() {
   };
 
   const handleExportPDF = () => {
-    const dataToExport = laporan.map((item) => ({
-      id:             item.kode_laporan,
-      waktu:          new Date(item.created_at).toLocaleString('id-ID'),
-      nopol:          item.nomor_plat,
-      jenis_kendaraan: item.jenis_kendaraan || '-',
-      alamat:         item.alamat || '-',
-      petugas:        item.petugas?.nama || '-',
-      tindakan:       item.tindakan?.[0]?.jenis_tindakan?.toUpperCase() || '-',
-      catatan:        item.tindakan?.[0]?.catatan_tindakan || '-',
-      waktu_tindakan: item.tindakan?.[0]?.waktu_selesai || null,
-      status:         item.status_laporan,
-      foto_bukti:     item.foto_bukti     || null,  // ← tambah ini
-      foto_tindakan:  item.tindakan?.[0]?.foto_tindakan || null,  // ← tambah ini
-    }))
-    localStorage.setItem('data_ekspor_dishub', JSON.stringify(dataToExport))
-    window.open('/internal/admin/preview-laporan', '_blank')
-    setShowExportModal(false)
-    
-  }
+    const dataToExport = laporan.map((item) => {
+      const tindakan = Array.isArray(item.tindakan)
+        ? item.tindakan[0]
+        : item.tindakan;
+
+      return {
+        id: item.kode_laporan,
+        waktu: new Date(item.created_at).toLocaleString('id-ID'),
+        nopol: item.nomor_plat || '-',
+        jenis_kendaraan: item.jenis_kendaraan || '-',
+        alamat: item.alamat || '-',
+        petugas: item.petugas?.nama || '-',
+        tindakan: tindakan?.jenis_tindakan?.toUpperCase() || '-',
+        catatan: tindakan?.catatan_tindakan || '-',
+        waktu_tindakan: tindakan?.waktu_selesai || null,
+        status: item.status_laporan,
+
+        // ini yang dibaca oleh PreviewPDF
+        foto_bukti_url: getFileUrl(item.foto_bukti),
+        foto_tindakan_url: getFileUrl(tindakan?.foto_tindakan),
+      };
+    });
+
+    localStorage.setItem('data_ekspor_dishub', JSON.stringify(dataToExport));
+    window.open('/internal/admin/preview-laporan', '_blank');
+    setShowExportModal(false);
+  };
 
   const TINDAKAN_STYLE = {
     derek:           'bg-red-100 text-red-700',
