@@ -64,10 +64,7 @@ export default function LocationPicker({ onSelect, value }) {
     
     // Kirim balik data teks alamat lengkap ke state form utama di parent
     if (!dipicuDariParent && onSelect) {
-      onSelect({ lat, lng, alamat: alamatStr, akurasi: acc })
-    } else if (dipicuDariParent && onSelect) {
-      // Jika dipicu parent, kirim balik alamat tanpa mengacaukan siklus koordinat lat/lng
-      onSelect({ lat, lng, alamat: alamatStr, akurasi: acc })
+      onSelect({ lat, lng, alamat: alamatStr, akurasi: acc });
     }
     
     setLoadingInternal(false)

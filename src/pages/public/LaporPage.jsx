@@ -40,6 +40,17 @@ export default function LaporPage() {
       .catch(err => console.error("Error:", err));
   }, [])
 
+  useEffect(() => {
+    if (step !== 1) return;
+    if (!form.alamat || form.alamat.trim().length < 8) return;
+
+    const timer = setTimeout(() => {
+      geocodeAlamat(form.alamat);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [form.alamat, step]);
+
   const handleChange = (e) => {
     const { name, value, files } = e.target
 
@@ -63,10 +74,10 @@ export default function LaporPage() {
       ...prev,
       latitude: lat,
       longitude: lng,
-      alamat: alamat || `Titik koordinat: ${lat}, ${lng}`,
+      alamat: alamat || prev.alamat,
       akurasi_lokasi: akurasi || null,
-    }))
-  }
+    }));
+  };
 
   const tangkapLokasiOtomatis = () => {
     if (!navigator.geolocation) {
@@ -101,6 +112,34 @@ export default function LaporPage() {
       },
       { enableHighAccuracy: true, timeout: 10000 }
     );
+  };
+
+  const geocodeAlamat = async (alamat) => {
+    if (!alamat || alamat.trim().length < 8) return;
+
+    try {
+      const query = encodeURIComponent(`${alamat}, Palu, Sulawesi Tengah, Indonesia`);
+
+      const res = await fetch(
+        `https://nominatim.openstreetmap.org/search?format=json&q=${query}&limit=1&accept-language=id`
+      );
+
+      const data = await res.json();
+
+      if (!data.length) return;
+
+      const lat = parseFloat(data[0].lat);
+      const lng = parseFloat(data[0].lon);
+
+      setForm(prev => ({
+        ...prev,
+        latitude: lat,
+        longitude: lng,
+        akurasi_lokasi: null,
+      }));
+    } catch (err) {
+      console.error('Gagal mencari alamat:', err);
+    }
   };
 
   const handleNext = () => {
