@@ -70,12 +70,15 @@ export default function LaporPage() {
 
   const tangkapLokasiOtomatis = () => {
     if (!navigator.geolocation) {
-      return Swal.fire({ icon: 'error', title: 'Oops!', text: 'Browser Anda tidak mendukung deteksi lokasi.' });
+      return Swal.fire({
+        icon: 'error',
+        title: 'Oops!',
+        text: 'Browser Anda tidak mendukung deteksi lokasi.'
+      });
     }
 
     setLoadingGPS(true);
-    
-    // Toast cantik saat proses mencari lokasi
+
     const Toast = Swal.mixin({
       toast: true,
       position: 'top-end',
@@ -84,26 +87,31 @@ export default function LaporPage() {
       timerProgressBar: true
     });
 
-    async (position) => {
-      const lat = position.coords.latitude;
-      const lng = position.coords.longitude;
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
 
-      const alamatGPS = await reverseGeocodeAlamat(lat, lng);
+        const alamatGPS = await reverseGeocodeAlamat(lat, lng);
 
-      setForm(prev => ({
-        ...prev,
-        latitude: lat,
-        longitude: lng,
-        alamat: alamatGPS || prev.alamat,
-        akurasi_lokasi: position.coords.accuracy
-      }));
+        setForm(prev => ({
+          ...prev,
+          latitude: lat,
+          longitude: lng,
+          alamat: alamatGPS || prev.alamat,
+          akurasi_lokasi: position.coords.accuracy
+        }));
 
-      setLoadingGPS(false);
-      Toast.fire({ icon: 'success', title: 'Lokasi berhasil dideteksi!' });
-    },
+        setLoadingGPS(false);
+        Toast.fire({ icon: 'success', title: 'Lokasi berhasil dideteksi!' });
+      },
       () => {
         setLoadingGPS(false);
-        Swal.fire({ icon: 'error', title: 'Gagal', text: 'Izin lokasi ditolak atau GPS tidak aktif.' });
+        Swal.fire({
+          icon: 'error',
+          title: 'Gagal',
+          text: 'Izin lokasi ditolak atau GPS tidak aktif.'
+        });
       },
       { enableHighAccuracy: true, timeout: 10000 }
     );
