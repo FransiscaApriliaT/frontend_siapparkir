@@ -57,7 +57,7 @@ export default function Dashboard() {
           <p className="text-blue-200 text-sm text-justify leading-relaxed">Bantu wujudkan ketertiban kota. Laporkan kendaraan yang parkir sembarangan dan pantau status tindak lanjut secara real-time.</p>
           <button
             onClick={() => navigate('/lapor')}
-            className="bg-cyan-100 hover:bg-cyan-300 text-blue-950 px-6 py-4 rounded-xl text-sm font-bold w-fit transition shadow-sm flex items-center gap-3"
+            className="bg-cyan-100 hover:bg-cyan-300 text-blue-950 px-5 py-2.5 rounded-xl text-sm font-bold w-fit transition shadow-sm flex items-center gap-2"
           >
             <img
               src="/icons/tambah2.png"
