@@ -56,7 +56,8 @@ export default function RiwayatPage() {
         
         {/* Title */}
         <div className="mb-6">
-          <div className="flex items-start gap-4">
+          {/* Header */}
+          <div className="flex items-start gap-4 mb-4">
             <div className="w-14 h-14 rounded-2xl bg-[#001A57] flex items-center justify-center shadow-md">
               <FileText size={26} className="text-white" />
             </div>
@@ -70,10 +71,17 @@ export default function RiwayatPage() {
                   Sistem SiapParkir
                 </p>
               </div>
-              <p className="text-gray-600 w-full text-sm leading-relaxed text-justify bg-gray-50 p-4 rounded-xl border border-gray-200">
-                Pantau status verifikasi, proses penanganan, hingga hasil penindakan dari setiap laporan yang telah Anda kirimkan.
-              </p>
             </div>
+          </div>
+          {/* Deskripsi Full Width */}
+          <div className="bg-gray-50 p-4 rounded-xl border border-gray-200">
+            <p className="text-gray-600 text-sm leading-relaxed text-justify">
+              Pantau status verifikasi, proses penanganan, hingga hasil penindakan
+              dari setiap laporan yang telah Anda kirimkan.
+            </p>
+          </div>
+
+        </div>
 
           </div>
         </div>
