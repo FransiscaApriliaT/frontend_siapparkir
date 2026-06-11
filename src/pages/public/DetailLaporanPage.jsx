@@ -53,7 +53,7 @@ export default function DetailLaporanPage() {
       Swal.fire({
         icon: 'error',
         title: 'Gagal',
-        text: 'Terjadi kesalahan saat mengirim penilaian. Silakan coba lagi.',
+        text: 'Penilaian sudah dilakukan sebelumnya.',
         confirmButtonColor: '#ef4444'
       });
     } finally {
