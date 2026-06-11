@@ -285,7 +285,7 @@ export default function AdminLaporanPenindakan() {
       <div className="space-y-6">
 
         {/* HEADER PAGE */}
-        <div className="flex justify-between items-start">
+        <div className="flex flex-col xl:flex-row gap-4 xl:items-stretch">
           <div className="bg-white border border-gray-200 rounded-3xl p-8 shadow-sm">
             <div className="flex items-center gap-5">
               <div className="w-16 h-16 rounded-2xl bg-[#001A57] flex items-center justify-center shadow-md">
@@ -308,9 +308,10 @@ export default function AdminLaporanPenindakan() {
 
           <button
             onClick={() => setShowExportModal(true)}
-            className="bg-blue-950 hover:bg-blue-900 text-white px-5 py-3 rounded-xl font-bold text-sm"
+            className="xl:w-44 bg-blue-950 hover:bg-blue-900 text-white px-5 py-4 rounded-2xl font-bold text-sm shadow-sm flex items-center justify-center gap-2 self-start xl:self-stretch"
           >
-            📤 Ekspor Data
+            <span>📤</span>
+            <span>Ekspor Data</span>
           </button>
         </div>
 

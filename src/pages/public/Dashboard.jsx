@@ -62,7 +62,7 @@ export default function Dashboard() {
             <img
               src="/icons/tambah2.png"
               alt="Laporan Baru"
-              className="w-7 h-7 object-contain"
+              className="w-9 h-9 object-contain"
             />
             Buat Laporan Baru
           </button>
@@ -74,14 +74,14 @@ export default function Dashboard() {
               <p className="text-xs font-bold text-gray-400 uppercase">Menunggu Verifikasi</p>
               <p className="text-3xl font-bold text-gray-800">{menunggu}</p>
             </div>
-            <div className="w-12 h-12"> <img src="/icons/menunggu.png" alt="Menunggu" className="w-full h-full object-contain" /></div>
+            <div className="w-16 h-16"> <img src="/icons/menunggu.png" alt="Menunggu" className="w-full h-full object-contain" /></div>
           </div>
           <div className="bg-white border border-gray-100 rounded-2xl p-6 flex items-center justify-between">
             <div>
               <p className="text-xs font-bold text-gray-400 uppercase">Sedang Ditindak</p>
               <p className="text-3xl font-bold text-gray-800">{ditindak}</p>
             </div>
-            <div className="w-12 h-12"> <img src="/icons/ditindak.png" alt="Ditindak" className="w-full h-full object-contain" /></div>
+            <div className="w-16 h-16"> <img src="/icons/ditindak.png" alt="Ditindak" className="w-full h-full object-contain" /></div>
           </div>
         </div>
       </div>
