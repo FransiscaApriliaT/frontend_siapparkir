@@ -186,7 +186,7 @@ export default function LaporanMasuk() {
                       <td className="px-6 py-4">
                         {item.foto_bukti ? (
                           <img
-                            src={`http://localhost:3000/uploads/${item.foto_bukti}`}
+                            src={`https://siapparkir-production.up.railway.app/uploads/${item.foto_bukti}`}
                             alt="Bukti"
                             className="w-16 h-10 object-cover rounded-lg border border-gray-100"
                           />
