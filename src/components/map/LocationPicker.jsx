@@ -72,19 +72,24 @@ export default function LocationPicker({ onSelect, value }) {
 
   // SINKRONISASI: Memantau perubahan koordinat saat tombol "Deteksi Otomatis" atas ditekan
   useEffect(() => {
-    if (value && value.lat && value.lng) {
-      // Cek apakah koordinat baru berbeda dengan posisi marker saat ini
-      const apakahKoordinatBerubah = !position || position[0] !== value.lat || position[1] !== value.lng
-      
+    if (value?.lat != null && value?.lng != null) {
+      const lat = Number(value.lat);
+      const lng = Number(value.lng);
+
+      const apakahKoordinatBerubah =
+        !position ||
+        Number(position[0]) !== lat ||
+        Number(position[1]) !== lng;
+
       if (apakahKoordinatBerubah) {
-        handleLocationSelect(value.lat, value.lng, value.akurasi || null, true)
+        handleLocationSelect(lat, lng, value.akurasi || null, true);
       }
     } else if (value === null) {
-      setPosition(null)
-      setAlamat('')
-      setAkurasi(null)
+      setPosition(null);
+      setAlamat('');
+      setAkurasi(null);
     }
-  }, [value])
+  }, [value]);
 
   return (
     <div className="space-y-2">

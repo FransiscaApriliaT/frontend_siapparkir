@@ -40,17 +40,6 @@ export default function LaporPage() {
       .catch(err => console.error("Error:", err));
   }, [])
 
-  useEffect(() => {
-    if (step !== 1) return;
-    if (!form.alamat || form.alamat.trim().length < 8) return;
-
-    const timer = setTimeout(() => {
-      geocodeAlamat(form.alamat);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, [form.alamat, step]);
-
   const handleChange = (e) => {
     const { name, value, files } = e.target
 
@@ -141,6 +130,17 @@ export default function LaporPage() {
       console.error('Gagal mencari alamat:', err);
     }
   };
+
+  useEffect(() => {
+    if (step !== 1) return;
+    if (!form.alamat || form.alamat.trim().length < 8) return;
+
+    const timer = setTimeout(() => {
+      geocodeAlamat(form.alamat);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [form.alamat, step]);
 
   const handleNext = () => {
     // Validasi Step 0
