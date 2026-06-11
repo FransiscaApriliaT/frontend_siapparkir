@@ -58,7 +58,7 @@ export default function PetugasLayout({ children }) {
         setPetugas({
           nama: data?.nama || 'Petugas',
           foto: data?.foto_profil
-            ? `http://localhost:3000/uploads/${data.foto_profil}`
+            ? `https://siapparkir-production.up.railway.app/uploads/${data.foto_profil}`
             : '/avatar-petugas.jpg'
         });
       } catch (err) {

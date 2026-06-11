@@ -56,7 +56,7 @@ export default function AdminLayout({ children }) {
         setAdmin({
           nama: data?.nama || 'Administrator',
           foto: data?.foto_profil
-            ? `http://localhost:3000/uploads/${data.foto_profil}`
+            ? `https://siapparkir-production.up.railway.app/uploads/${data.foto_profil}`
             : '/avatar-admin.jpg',
         });
       } catch (err) {

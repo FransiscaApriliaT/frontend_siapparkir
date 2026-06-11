@@ -128,7 +128,13 @@ export default function RiwayatPenindakan() {
             <tbody className="divide-y divide-gray-100">
               {riwayat.map((item) => {
                 const lap = item.Laporan || {};
-                const tindakan = lap.tindakan?.[0] || {};
+                const tindakan =
+                  lap.tindakan?.[0] ||
+                  lap.Tindakan?.[0] ||
+                  lap.tindakans?.[0] ||
+                  item.tindakan?.[0] ||
+                  item.Tindakan?.[0] ||
+                  {};
                 return (
                   <tr key={item.id_penugasan} className="hover:bg-gray-50 transition cursor-pointer" onClick={() => navigate(`/internal/petugas/detail-penindakan/${item.id_penugasan}`)}>
                     <td className="px-6 py-4 font-bold text-[#001A57]">#{lap.kode_laporan || '-'}</td>
@@ -137,10 +143,12 @@ export default function RiwayatPenindakan() {
                     </td>
                     <td className="px-6 py-4 max-w-xs text-gray-700 text-xs truncate">{lap.alamat || '-'}</td>
                     <td className="px-6 py-4">
-                      {tindakan.jenis_tindakan ? (
-                        <span className={`px-2 py-1 rounded text-[11px] font-bold ${TINDAKAN_STYLE[tindakan.jenis_tindakan] || 'bg-gray-100'}`}>
-                          {TINDAKAN_LABEL[tindakan.jenis_tindakan] || tindakan.jenis_tindakan}
-                        </span>
+                      {tindakan.foto_tindakan ? (
+                        <img
+                          src={`https://siapparkir-production.up.railway.app/uploads/${tindakan.foto_tindakan}`}
+                          alt="Bukti"
+                          className="w-14 h-10 object-cover rounded-lg"
+                        />
                       ) : '-'}
                     </td>
                     <td className="px-6 py-4">
