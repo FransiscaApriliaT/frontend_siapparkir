@@ -97,11 +97,12 @@ export default function LocationPicker({ onSelect, value }) {
         atau klik langsung di peta
       </div>
 
-      <div className="rounded-xl overflow-hidden border border-gray-200" style={{ height: 300 }}>
+      <div className="relative z-0 rounded-xl overflow-hidden border border-gray-200" style={{ height: 300 }}>
         <MapContainer
           center={position || defaultCenter}
           zoom={13}
-          style={{ height: '100%', width: '100%' }}
+          className="z-0"
+          style={{ height: '100%', width: '100%', zIndex: 0 }}
         >
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
