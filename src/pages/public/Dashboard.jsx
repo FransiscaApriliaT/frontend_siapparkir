@@ -55,11 +55,16 @@ export default function Dashboard() {
         <div className="lg:col-span-2 bg-gradient-to-r from-blue-950 to-blue-900 rounded-2xl p-8 relative overflow-hidden text-white flex flex-col justify-between shadow-sm min-h-[220px]">
           <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Pantau & Lapor Parkir Liar</h1>
           <p className="text-blue-200 text-sm text-justify leading-relaxed">Bantu wujudkan ketertiban kota. Laporkan kendaraan yang parkir sembarangan dan pantau status tindak lanjut secara real-time.</p>
-          <button 
-            onClick={() => navigate('/lapor')} 
-            className="bg-cyan-100 hover:bg-cyan-300 text-blue-950 px-5 py-2.5 rounded-xl text-sm font-bold w-fit transition shadow-sm"
+          <button
+            onClick={() => navigate('/lapor')}
+            className="bg-cyan-100 hover:bg-cyan-300 text-blue-950 px-5 py-2.5 rounded-xl text-sm font-bold w-fit transition shadow-sm flex items-center gap-2"
           >
-            📸 Buat Laporan Baru
+            <img
+              src="/icons/tambah.png"
+              alt="Laporan Baru"
+              className="w-5 h-5 object-contain"
+            />
+            Buat Laporan Baru
           </button>
         </div>
         
@@ -69,14 +74,14 @@ export default function Dashboard() {
               <p className="text-xs font-bold text-gray-400 uppercase">Menunggu Verifikasi</p>
               <p className="text-3xl font-bold text-gray-800">{menunggu}</p>
             </div>
-            <div className="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center text-xl">📋</div>
+            <div className="w-12 h-12"> <img src="/icons/waiting-report.png" alt="Menunggu" className="w-full h-full object-contain" /></div>
           </div>
           <div className="bg-white border border-gray-100 rounded-2xl p-6 flex items-center justify-between">
             <div>
               <p className="text-xs font-bold text-gray-400 uppercase">Sedang Ditindak</p>
               <p className="text-3xl font-bold text-gray-800">{ditindak}</p>
             </div>
-            <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-xl">🛡️</div>
+            <div className="w-12 h-12"> <img src="/icons/in-progress-report.png" alt="Ditindak" className="w-full h-full object-contain" /></div>
           </div>
         </div>
       </div>
