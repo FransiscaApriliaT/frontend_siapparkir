@@ -66,7 +66,9 @@ export default function MasyarakatLayout() {
         {/* SIDEBAR */}
         <aside
           className={`
-            fixed md:sticky md:top-0 top-0 left-0 z-50 h-screen md:h-full w-72 bg-blue-950 flex flex-col
+            fixed md:sticky md:top-0 top-0 left-0 z-50
+            h-screen md:h-full
+            w-72 bg-blue-950 flex flex-col
             transform transition-transform duration-300
             ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
             md:translate-x-0
@@ -101,7 +103,7 @@ export default function MasyarakatLayout() {
           </div>
 
           {/* MENU */}
-          <div className="space-y-1 flex-1 p-4">
+          <div className="space-y-1 p-4 overflow-y-auto">
             <button
               onClick={() => goTo('/lapor')}
               className="w-full flex items-center gap-3 px-4 py-3 mb-4 rounded-xl text-sm font-semibold transition-all bg-white/10 border border-white/30 text-white hover:bg-blue-600 hover:border-blue-500 shadow-[0_0_10px_rgba(255,255,255,0.1)] hover:shadow-[0_0_15px_rgba(37,99,235,0.5)]"
@@ -133,7 +135,7 @@ export default function MasyarakatLayout() {
           </div>
 
           {/* LOGOUT */}
-          <div className="p-4 border-t border-blue-900">
+          <div className="p-4 border-t border-blue-900 mt-auto">
             <button
               onClick={() => goTo('/')}
               className="w-full flex items-center justify-center gap-2 text-blue-200 text-sm font-semibold py-2.5 rounded-xl border border-blue-800 transition-all duration-200 hover:bg-red-500 hover:text-white hover:border-red-500 hover:shadow-lg hover:-translate-y-0.5 active:scale-95"
