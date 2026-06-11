@@ -83,9 +83,6 @@ export default function RiwayatPage() {
 
         </div>
 
-          </div>
-        </div>
-
         {/* Stat Cards - Tengahnya persis */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
