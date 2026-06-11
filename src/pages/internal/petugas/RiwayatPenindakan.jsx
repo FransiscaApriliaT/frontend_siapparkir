@@ -49,6 +49,11 @@ export default function RiwayatPenindakan() {
         if (!isMounted) return;
 
         const data = Array.isArray(res.data?.data?.data) ? res.data.data.data : [];
+        console.log("FULL RESPONSE:", res.data);
+        console.log("DATA ARRAY:", data);
+        console.log("ITEM PERTAMA:", data[0]);
+        console.log("LAPORAN:", data[0]?.Laporan);
+        console.log("TINDAKAN:", data[0]?.Laporan?.tindakan);
         setRiwayat(data);
 
         // Menggunakan reduce agar lebih efisien (hanya 1x iterasi data)
@@ -143,17 +148,19 @@ export default function RiwayatPenindakan() {
                     </td>
                     <td className="px-6 py-4 max-w-xs text-gray-700 text-xs truncate">{lap.alamat || '-'}</td>
                     <td className="px-6 py-4">
+                      {tindakan.jenis_tindakan ? (
+                        <span className={`px-2 py-1 rounded text-[11px] font-bold ${TINDAKAN_STYLE[tindakan.jenis_tindakan] || 'bg-gray-100 text-gray-700'}`}>
+                          {TINDAKAN_LABEL[tindakan.jenis_tindakan] || tindakan.jenis_tindakan}
+                        </span>
+                      ) : '-'}
+                    </td>
+                    <td className="px-6 py-4">
                       {tindakan.foto_tindakan ? (
                         <img
                           src={`https://siapparkir-production.up.railway.app/uploads/${tindakan.foto_tindakan}`}
                           alt="Bukti"
                           className="w-14 h-10 object-cover rounded-lg"
                         />
-                      ) : '-'}
-                    </td>
-                    <td className="px-6 py-4">
-                      {tindakan.foto_tindakan ? (
-                        <img src={`https://siapparkir-production.up.railway.app/uploads/${tindakan.foto_tindakan}`} alt="Bukti" className="w-14 h-10 object-cover rounded-lg" />
                       ) : '-'}
                     </td>
                     <td className="px-6 py-4 text-gray-400 text-xs">{formatTanggal(tindakan.waktu_selesai || item.waktu_penugasan)}</td>
