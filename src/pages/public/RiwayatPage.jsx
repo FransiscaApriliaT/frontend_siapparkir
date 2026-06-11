@@ -114,14 +114,17 @@ export default function RiwayatPage() {
               </div>
 
               <div className="flex-1 min-w-0 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div>
-                  <p className="font-bold text-gray-800 text-base">{l.kategori?.nama_kategori || l.nomor_plat}</p>
-                  <div className="text-xs text-gray-500 mt-1 flex items-center gap-1.5">
-                    <span>📍</span>
-                    <span className="truncate text-justify leading-relaxed">{l.alamat}</span>
-                    <span className="mx-1">•</span>
-                    <span>📅 {formatTanggal(l.waktu_laporan)}</span>
+                <div className="min-w-0">
+                  <p className="font-bold text-gray-800 text-base truncate">
+                    {l.kategori?.nama_kategori || l.nomor_plat}
+                  </p>
+                  <div className="text-xs text-gray-500 mt-1 flex items-center gap-1.5 min-w-0">
+                    <span className="flex-shrink-0">📍</span>
+                    <span className="truncate min-w-0 flex-1">{l.alamat}</span>
                   </div>
+                  <p className="text-xs text-gray-400 mt-1">
+                    📅 {formatTanggal(l.waktu_laporan)}
+                  </p>
                 </div>
 
                 {/* Badge Status */}
