@@ -12,7 +12,10 @@ export default function PetugasDashboard() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (token) fetchLaporan();
+    if (!token) return;
+    fetchLaporan();
+    const interval = setInterval(fetchLaporan, 5000);
+    return () => clearInterval(interval);
   }, [token]);
 
   const fetchLaporan = async () => {

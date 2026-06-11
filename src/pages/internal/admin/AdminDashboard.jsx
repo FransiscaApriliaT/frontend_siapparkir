@@ -12,23 +12,38 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!token) return;
+
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://siapparkir-production.up.railway.app/admin/dashboard', {
-          headers: { Authorization: `Bearer ${token}` }
-        });
+        const response = await axios.get(
+          'https://siapparkir-production.up.railway.app/admin/dashboard',
+          {
+            headers: { Authorization: `Bearer ${token}` }
+          }
+        );
+
         setData(response.data.data);
       } catch (err) {
         if (err.response?.status === 401 || err.response?.status === 403) {
           window.location.href = '/login';
           return;
         }
+
         setError('Gagal memuat data dashboard.');
       } finally {
         setLoading(false);
       }
     };
+
     fetchData();
+
+    const interval = setInterval(() => {
+      fetchData();
+    }, 5000); // 5 detik
+
+    return () => clearInterval(interval);
+
   }, [token]);
 
   if (loading) return <div className="min-h-screen flex items-center justify-center text-blue-900 font-bold">Memuat Dashboard...</div>;
