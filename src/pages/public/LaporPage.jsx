@@ -133,11 +133,11 @@ export default function LaporPage() {
 
   useEffect(() => {
     if (step !== 1) return;
-    if (!form.alamat || form.alamat.trim().length < 8) return;
+    if (!form.alamat || form.alamat.trim().length < 4) return;
 
     const timer = setTimeout(() => {
       geocodeAlamat(form.alamat);
-    }, 1000);
+    }, 1200);
 
     return () => clearTimeout(timer);
   }, [form.alamat, step]);
