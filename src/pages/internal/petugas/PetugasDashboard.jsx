@@ -13,41 +13,34 @@ export default function PetugasDashboard() {
 
   useEffect(() => {
     if (!token) return;
-    fetchLaporan();
-    const interval = setInterval(fetchLaporan, 5000);
+
+    fetchLaporan(true);
+
+    const interval = setInterval(() => {
+      fetchLaporan(false);
+    }, 15000);
+
     return () => clearInterval(interval);
   }, [token]);
 
-  const fetchLaporan = async () => {
+  const fetchLaporan = async (showLoading = false) => {
     try {
-      setLoading(true);
+      if (showLoading) setLoading(true);
 
-      const res = await axios.get('https://siapparkir-production.up.railway.app/petugas/dashboard', {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      const res = await axios.get(
+        'https://siapparkir-production.up.railway.app/petugas/dashboard',
+        {
+          headers: { Authorization: `Bearer ${token}` }
+        }
+      );
 
-      // Mengambil data dengan aman menggunakan optional chaining
       const tugasAktif = res.data?.data?.tugas_aktif;
-      
-      // Validasi tipe data sebelum set ke state
       setLaporan(Array.isArray(tugasAktif) ? tugasAktif : []);
 
     } catch (err) {
       console.error("Gagal memuat dashboard:", err);
-
-      // Memberikan feedback visual yang cantik jika terjadi error
-      Swal.fire({
-        icon: 'error',
-        title: 'Gagal Memuat Data',
-        text: 'Terjadi kesalahan saat mengambil data dashboard. Silakan coba muat ulang.',
-        confirmButtonColor: '#001A57',
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000
-      });
     } finally {
-      setLoading(false);
+      if (showLoading) setLoading(false);
     }
   };
 

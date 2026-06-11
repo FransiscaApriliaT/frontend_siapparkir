@@ -14,8 +14,10 @@ export default function AdminDashboard() {
   useEffect(() => {
     if (!token) return;
 
-    const fetchData = async () => {
+    const fetchData = async (showLoading = false) => {
       try {
+        if (showLoading) setLoading(true);
+
         const response = await axios.get(
           'https://siapparkir-production.up.railway.app/admin/dashboard',
           {
@@ -25,22 +27,28 @@ export default function AdminDashboard() {
 
         setData(response.data.data);
       } catch (err) {
+        console.error(err);
+
         if (err.response?.status === 401 || err.response?.status === 403) {
           window.location.href = '/login';
           return;
         }
 
-        setError('Gagal memuat data dashboard.');
+        if (showLoading) {
+          setError('Gagal memuat data dashboard.');
+        }
       } finally {
-        setLoading(false);
+        if (showLoading) setLoading(false);
       }
     };
 
-    fetchData();
+    // Pertama kali load
+    fetchData(true);
 
+    // Refresh background
     const interval = setInterval(() => {
-      fetchData();
-    }, 5000); // 5 detik
+      fetchData(false);
+    }, 10000);
 
     return () => clearInterval(interval);
 
