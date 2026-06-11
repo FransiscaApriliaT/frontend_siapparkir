@@ -84,17 +84,23 @@ export default function LaporPage() {
       timerProgressBar: true
     });
 
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        setForm(prev => ({
-          ...prev,
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-          akurasi_lokasi: position.coords.accuracy
-        }));
-        setLoadingGPS(false);
-        Toast.fire({ icon: 'success', title: 'Lokasi berhasil dideteksi!' });
-      },
+    async (position) => {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+
+      const alamatGPS = await reverseGeocodeAlamat(lat, lng);
+
+      setForm(prev => ({
+        ...prev,
+        latitude: lat,
+        longitude: lng,
+        alamat: alamatGPS || prev.alamat,
+        akurasi_lokasi: position.coords.accuracy
+      }));
+
+      setLoadingGPS(false);
+      Toast.fire({ icon: 'success', title: 'Lokasi berhasil dideteksi!' });
+    },
       () => {
         setLoadingGPS(false);
         Swal.fire({ icon: 'error', title: 'Gagal', text: 'Izin lokasi ditolak atau GPS tidak aktif.' });
@@ -104,30 +110,41 @@ export default function LaporPage() {
   };
 
   const geocodeAlamat = async (alamat) => {
-    if (!alamat || alamat.trim().length < 8) return;
+    if (!alamat || alamat.trim().length < 4) return;
 
     try {
-      const query = encodeURIComponent(`${alamat}, Palu, Sulawesi Tengah, Indonesia`);
+      const query = encodeURIComponent(`${alamat} Palu`);
 
       const res = await fetch(
-        `https://nominatim.openstreetmap.org/search?format=json&q=${query}&limit=1&accept-language=id`
+        `https://nominatim.openstreetmap.org/search?format=json&q=${query}&limit=1&accept-language=id&countrycodes=id&viewbox=119.75,-0.70,120.05,-1.05&bounded=1`
       );
 
       const data = await res.json();
+      console.log('HASIL GEOCODE:', data);
 
       if (!data.length) return;
 
-      const lat = parseFloat(data[0].lat);
-      const lng = parseFloat(data[0].lon);
-
       setForm(prev => ({
         ...prev,
-        latitude: lat,
-        longitude: lng,
+        latitude: parseFloat(data[0].lat),
+        longitude: parseFloat(data[0].lon),
         akurasi_lokasi: null,
       }));
     } catch (err) {
       console.error('Gagal mencari alamat:', err);
+    }
+  };
+
+  const reverseGeocodeAlamat = async (lat, lng) => {
+    try {
+      const res = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=id`
+      );
+
+      const data = await res.json();
+      return data.display_name || '';
+    } catch {
+      return '';
     }
   };
 
